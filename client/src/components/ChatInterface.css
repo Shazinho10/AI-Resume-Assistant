@@ -1,0 +1,391 @@
+/* client\src\components\ChatInterface.css */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.chat-header h2 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 1.5rem;
+}
+
+.uploaded-files-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.welcome-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.welcome-message h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.suggestions button {
+  padding: 12px 20px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.suggestions button:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.assistant {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.message.user .message-content {
+  background: #4f46e5;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant .message-content {
+  background: #f3f4f6;
+  color: #1f2937;
+  border-bottom-left-radius: 4px;
+}
+
+.sources {
+  margin-top: 12px;
+  font-size: 0.875rem;
+}
+
+.sources details {
+  cursor: pointer;
+}
+
+.sources summary {
+  color: #6b7280;
+  padding: 8px;
+  background: white;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.source-item {
+  padding: 8px;
+  margin-top: 8px;
+  background: white;
+  border-left: 3px solid #4f46e5;
+  font-size: 0.8rem;
+  color: #6b7280;
+  border-radius: 4px;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: #9ca3af;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: white;
+}
+
+.chat-input-container textarea {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.938rem;
+  resize: none;
+  max-height: 120px;
+  min-height: 44px;
+}
+
+.chat-input-container textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.send-btn {
+  padding: 12px 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.send-btn:hover:not(:disabled) {
+  background: #4338ca;
+}
+
+.send-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ============================================ */
+/* Markdown Styling for Assistant Messages */
+/* ============================================ */
+
+.message.assistant .message-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Headings */
+.md-h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5em 0 0.3em 0;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.3em;
+}
+
+.md-h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0.5em 0 0.3em 0;
+  color: #374151;
+}
+
+.md-h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.4em 0 0.25em 0;
+  color: #4b5563;
+}
+
+/* Paragraphs */
+.md-p {
+  margin: 0.5em 0;
+  line-height: 1.6;
+}
+
+.md-p:first-child {
+  margin-top: 0;
+}
+
+.md-p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+.md-ul, .md-ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.md-li {
+  margin: 0.3em 0;
+  line-height: 1.5;
+}
+
+/* Bold and Italic */
+.md-strong {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.md-em {
+  font-style: italic;
+  color: #4b5563;
+}
+
+/* Inline Code */
+.md-code-inline {
+  background: #f1f5f9;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  color: #db2777;
+  border: 1px solid #e2e8f0;
+}
+
+/* Code Blocks */
+.md-pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 0.75em 0;
+  border: 1px solid #334155;
+}
+
+.md-code-block {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+/* Blockquotes */
+.md-blockquote {
+  border-left: 4px solid #4f46e5;
+  padding-left: 1em;
+  margin: 0.75em 0;
+  color: #6b7280;
+  font-style: italic;
+  background: #f9fafb;
+  padding: 0.75em 1em;
+  border-radius: 4px;
+}
+
+/* Tables */
+.md-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75em 0;
+  font-size: 0.875rem;
+}
+
+.md-th {
+  background: #f3f4f6;
+  padding: 0.75em;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.md-td {
+  padding: 0.75em;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+}
+
+.md-table tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Links (if LLM includes any) */
+.message.assistant .message-content a {
+  color: #4f46e5;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.message.assistant .message-content a:hover {
+  color: #4338ca;
+}
+
+/* Horizontal Rules */
+.message.assistant .message-content hr {
+  border: none;
+  border-top: 2px solid #e5e7eb;
+  margin: 1em 0;
+}
